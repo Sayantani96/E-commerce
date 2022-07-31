@@ -12,7 +12,7 @@ const SignupForm = () => {
   })
  
   const {displayName,email,password,confirmPassword}=formFields;
-  console.log(formFields);
+  // console.log(formFields);
 
   const handleChange=(event)=>{
     const {name,value}=event.target;
@@ -39,8 +39,11 @@ const SignupForm = () => {
   return (
     <div className='sign-up-container'>
         <h2>
-            Sign Up with your email
+            I do not have an account
         </h2>
+        <h3>
+          Sign up with email and password
+        </h3>
         <form onSubmit={handleSubmit}>
           <InputForm
           label="Name"

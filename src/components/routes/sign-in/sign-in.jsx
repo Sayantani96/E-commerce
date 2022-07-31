@@ -1,44 +1,89 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import { getRedirectResult } from 'firebase/auth'
 import {
   auth, 
   signInWithGooglePopup,
   createUserDocumentFromAuth,
-  signInWithGoogleRedirect } from '../../../utils/firebase.utils'
+  signInUserWithEmailAndPassword } from '../../../utils/firebase.utils'
 import SignupForm from '../../signupForm/signupForm';
+import './sign-in.scss'
+import InputForm from '../../signupForm/InputForm';
+import Button from '../../Button/Button';
+
 
 const SignIn = () => {
-  
+ const [signInFields,setSignInFields]=useState({
+  email:'',
+  password:''
+ }) 
+ const {email,password}=signInFields
   useEffect(()=>{
     (async()=>{
       const response=await getRedirectResult(auth);
-      console.log(response.user);
+      // console.log(response.user);
       if(response){
         const userDocRef=await createUserDocumentFromAuth(response.user);
       }
     })();
   },[])
+  const handleChange=(event)=>{
+    const {name,value}=event.target;
+    setSignInFields({...signInFields,[name]:value})
+  }
 const logGoogleUser=async()=>{
     const {user}= await signInWithGooglePopup();
-    console.log(user.uid); 
+    // console.log(user.uid); 
     const userDocRef=await createUserDocumentFromAuth(user);
 }
-// const logRedirectUser=async()=>{
-//   const {user}=await signInWithGoogleRedirect();
-//   console.log(user);
-// }
+const Signin=async()=>{
+  try{
+    const response=await signInUserWithEmailAndPassword(email,password);
+    if(response){
+      alert('signed in')
+    }
+  }catch(error){
+    console.log(error.message);
+  }
+
+}
+
   return (
     <>
-    <div>
-    Sign In
-</div>
-<button onClick={logGoogleUser}>
-Sign in with google popup
-</button>
-<button onClick={signInWithGoogleRedirect}>
-Sign in with google redirect
-</button>
+<div style={{display:'flex',justifyContent:'space-evenly'}}>
+  <div>
+    <h2>I already have an account</h2>
+    <h3>Sign in with your email and password</h3>
+    <InputForm
+          label="Email"
+          type="email" 
+          required
+          name="email" 
+          value={email}
+          onChange={handleChange}
+          />
+           <InputForm
+          label="Password"
+          type="password" 
+          required
+          name="password" 
+          value={password}
+          onChange={handleChange}
+          />
+          <div style={{display:'flex'}}>
+            <Button
+             buttonText="Sign in"
+              buttonType="submit" 
+              buttonClass=''
+              onClick={Signin}/>
+            <Button 
+            buttonText="Sign in with google" 
+            buttonType="submit" 
+            buttonClass='google-sign-in' 
+            onClick={logGoogleUser}/>
+          </div>
+  </div>
 <SignupForm/>
+</div>
     </>
 
   )
