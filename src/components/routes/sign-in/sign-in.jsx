@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import { getRedirectResult } from 'firebase/auth'
 import {
   auth, 
@@ -9,9 +9,10 @@ import SignupForm from '../../signupForm/signupForm';
 import './sign-in.scss'
 import InputForm from '../../signupForm/InputForm';
 import Button from '../../Button/Button';
-
+import { UserContext } from '../../../context/UserContext';
 
 const SignIn = () => {
+  const {setCurrentUser}=useContext(UserContext);
  const [signInFields,setSignInFields]=useState({
   email:'',
   password:''
@@ -21,9 +22,9 @@ const SignIn = () => {
     (async()=>{
       const response=await getRedirectResult(auth);
       // console.log(response.user);
-      if(response){
-        const userDocRef=await createUserDocumentFromAuth(response.user);
-      }
+      // if(response){
+      //   const userDocRef=await createUserDocumentFromAuth(response.user);
+      // }
     })();
   },[])
   const handleChange=(event)=>{
@@ -33,11 +34,14 @@ const SignIn = () => {
 const logGoogleUser=async()=>{
     const {user}= await signInWithGooglePopup();
     // console.log(user.uid); 
-    const userDocRef=await createUserDocumentFromAuth(user);
-}
+    
+//     setCurrentUser(user);
+ }
 const Signin=async()=>{
+  
   try{
     const response=await signInUserWithEmailAndPassword(email,password);
+    // setCurrentUser(response.user);
     if(response){
       alert('signed in')
     }
