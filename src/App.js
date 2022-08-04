@@ -1,4 +1,5 @@
 import {Routes,Route} from 'react-router-dom'
+import Checkout from './components/routes/checkout/Checkout';
 import Home from './components/routes/home/home';
 import Navigation from './components/routes/Navigation/Navigation';
 import Product from './components/routes/product/product';
@@ -13,6 +14,7 @@ function App() {
       <Route index element={<Home/>}/>
       <Route path='/sign-in' element={<SignIn/>}/>
       <Route path='/products' element={<Product/>}/>
+      <Route path='/checkout' element={<Checkout/>}/>
       </Route>
       
     </Routes>
