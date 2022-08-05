@@ -1,0 +1,7 @@
+
+
+@mixin smaller-scr {
+    @media(max-width:900px){
+        @content
+    }
+}
