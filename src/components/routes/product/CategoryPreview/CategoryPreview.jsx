@@ -6,6 +6,7 @@ import { CartItemContext } from '../../../../context/CartItemContext';
 import './CategoryPreview.scss';
 import Button from '../../../Button/Button';
 
+
 const CategoryPreview = ({ title, products }) => {
     const {addItemToCart}=useContext(CartItemContext)
     return (
