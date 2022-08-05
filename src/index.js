@@ -5,7 +5,7 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {UserProvider} from './context/UserContext';
-import { ProductProvider } from './context/ProductContext';
+import { CategoriesProvider } from './context/CategoriesContext';
 import { CartProvider } from './context/CartItemContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,11 +13,11 @@ root.render(
     <BrowserRouter>
     <UserProvider>
    
-      <ProductProvider>
+      <CategoriesProvider>
       <CartProvider>
         <App />
         </CartProvider>
-      </ProductProvider> 
+      </CategoriesProvider> 
     </UserProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,9 +1,9 @@
 import React from 'react'
-import './category-item.scss'
+import './homepage-item.scss'
 const CategoryItem = ({category}) => {
     const {title,imageUrl}=category;
   return (
-      <div  className='category-container'>
+      <div  className='homepage-container'>
          <div className='background-image' style={{
             backgroundImage:`url(${imageUrl})`,
             width:'100%'
