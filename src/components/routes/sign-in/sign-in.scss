@@ -12,14 +12,14 @@ h3{
 }
 
 .authenticate{
-    display:'flex';
-    justify-content:'space-evenly';
+    display:flex;
+    justify-content:space-evenly;
     @include smaller-scr{
         display:block;
     }
 }
 .sign-in-button{
-    display:'flex';
+    display:flex;
     @include smaller-scr{
         display:block;
         margin-bottom:20px;
