@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useContext,useState} from 'react'
 import { getRedirectResult } from 'firebase/auth'
 import {
   auth, 
@@ -9,10 +9,10 @@ import SignupForm from '../../signupForm/signupForm';
 import './sign-in.scss'
 import InputForm from '../../signupForm/InputForm';
 import Button from '../../Button/Button';
-// import { UserContext } from '../../../context/UserContext';
+import { UserContext } from '../../../context/UserContext';
 
 const SignIn = () => {
-  // const {setCurrentUser}=useContext(UserContext);
+  const {setCurrentUser}=useContext(UserContext);
  const [signInFields,setSignInFields]=useState({
   email:'',
   password:''
@@ -33,17 +33,17 @@ const SignIn = () => {
     setSignInFields({...signInFields,[name]:value})
   }
 const logGoogleUser=async()=>{
-    // const {user}= 
+    const {user}= 
     await signInWithGooglePopup();
     // console.log(user.uid); 
     
-//     setCurrentUser(user);
+    setCurrentUser(user);
  }
 const Signin=async()=>{
   
   try{
     const response=await signInUserWithEmailAndPassword(email,password);
-    // setCurrentUser(response.user);
+    setCurrentUser(response.user);
     if(response){
       alert('signed in')
     }

@@ -82,9 +82,9 @@ const SignupForm = () => {
           value={confirmPassword}
            onChange={handleChange}
           />
-          <Link to='/'>
+          {/* <Link to='/'> */}
           <Button buttonText="Sign Up" buttonType="submit" buttonClass=""/>
-          </Link>
+          {/* </Link> */}
          
         </form>
     </div>

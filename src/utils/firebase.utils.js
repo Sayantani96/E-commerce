@@ -26,7 +26,7 @@ getDocs} from 'firebase/firestore'
       };
   
   // Initialize Firebase
-  // const firebaseApp =
+  const firebaseApp =
    initializeApp(firebaseConfig);
   const provider=new GoogleAuthProvider();
   provider.setCustomParameters({
