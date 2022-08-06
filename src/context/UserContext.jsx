@@ -1,4 +1,4 @@
-import React,{createContext, useEffect, useState} from 'react'
+import React,{createContext,useEffect, useState} from 'react'
 import { authChangeListener,createUserDocumentFromAuth } from '../utils/firebase.utils';
 
 export const UserContext = createContext({
@@ -10,7 +10,8 @@ export const UserProvider=({children})=>{
     const [currentUser,setCurrentUser]=useState(null);
     const value={currentUser,setCurrentUser}
     useEffect(()=>{
-        const signChange=authChangeListener((user)=>{
+        // const signChange=
+        authChangeListener((user)=>{
             // console.log(user);
             if(user){
                  createUserDocumentFromAuth(user);

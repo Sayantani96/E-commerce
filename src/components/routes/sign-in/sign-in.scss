@@ -1,3 +1,5 @@
+@import '../../../StyleBase/style-base.scss';
+
 $sub-color: grey;
 $main-color: black;
 
@@ -7,4 +9,19 @@ h2{
 h3{
     color:$sub-color;
     font-weight:200;
+}
+
+.authenticate{
+    display:'flex';
+    justify-content:'space-evenly';
+    @include smaller-scr{
+        display:block;
+    }
+}
+.sign-in-button{
+    display:'flex';
+    @include smaller-scr{
+        display:block;
+        margin-bottom:20px;
+    } 
 }

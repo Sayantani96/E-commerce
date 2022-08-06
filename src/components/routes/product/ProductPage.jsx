@@ -10,7 +10,7 @@ const ProductPage = () => {
   }
   return (
     <div className='cart-icon-container' onClick={dropdownHandler}>
-        <img src={Bag} className='shopping-icon'/>
+        <img src={Bag} alt='shopping bag' className='shopping-icon'/>
         <span className='item-count'>{cartContentCounter}</span>
     </div>
     

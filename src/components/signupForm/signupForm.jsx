@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { createUserDocWithEmailAndPassword,createUserDocumentFromAuth } from '../../utils/firebase.utils';
 import InputForm from './InputForm';
 import Button from '../Button/Button';
-import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
+// import { UserContext } from '../../context/UserContext';
 
 const SignupForm = () => {
-  const {setCurrentUser}=useContext(UserContext);
+  // const {setCurrentUser}=useContext(UserContext);
   const [formFields,setField]=useState({
     displayName:'',
     email:'',
@@ -48,7 +49,7 @@ const SignupForm = () => {
         <h3>
           Sign up with email and password
         </h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='sign-up-form'>
           <InputForm
           label="Name"
           type="text" 
@@ -81,7 +82,10 @@ const SignupForm = () => {
           value={confirmPassword}
            onChange={handleChange}
           />
+          <Link to='/'>
           <Button buttonText="Sign Up" buttonType="submit" buttonClass=""/>
+          </Link>
+         
         </form>
     </div>
   )

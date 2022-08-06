@@ -1,18 +1,18 @@
-import React,{useContext, useEffect, useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { getRedirectResult } from 'firebase/auth'
 import {
   auth, 
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
+  // createUserDocumentFromAuth,
   signInUserWithEmailAndPassword } from '../../../utils/firebase.utils'
 import SignupForm from '../../signupForm/signupForm';
 import './sign-in.scss'
 import InputForm from '../../signupForm/InputForm';
 import Button from '../../Button/Button';
-import { UserContext } from '../../../context/UserContext';
+// import { UserContext } from '../../../context/UserContext';
 
 const SignIn = () => {
-  const {setCurrentUser}=useContext(UserContext);
+  // const {setCurrentUser}=useContext(UserContext);
  const [signInFields,setSignInFields]=useState({
   email:'',
   password:''
@@ -20,7 +20,8 @@ const SignIn = () => {
  const {email,password}=signInFields
   useEffect(()=>{
     (async()=>{
-      const response=await getRedirectResult(auth);
+      // const response=
+      await getRedirectResult(auth);
       // console.log(response.user);
       // if(response){
       //   const userDocRef=await createUserDocumentFromAuth(response.user);
@@ -32,7 +33,8 @@ const SignIn = () => {
     setSignInFields({...signInFields,[name]:value})
   }
 const logGoogleUser=async()=>{
-    const {user}= await signInWithGooglePopup();
+    // const {user}= 
+    await signInWithGooglePopup();
     // console.log(user.uid); 
     
 //     setCurrentUser(user);
@@ -53,7 +55,7 @@ const Signin=async()=>{
 
   return (
     <>
-<div style={{display:'flex',justifyContent:'space-evenly'}}>
+<div className='authenticate'>
   <div>
     <h2>I already have an account</h2>
     <h3>Sign in with your email and password</h3>
@@ -73,7 +75,7 @@ const Signin=async()=>{
           value={password}
           onChange={handleChange}
           />
-          <div style={{display:'flex'}}>
+          <div className='sign-in-button'>
             <Button
              buttonText="Sign in"
               buttonType="submit" 
