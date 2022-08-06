@@ -14,7 +14,7 @@ const Navigation=()=>{
   const {isCartOpen}=useContext(CartItemContext);
   const signOutHandler=async()=>{
       await signOutUser();
-      // setCurrentUser(null);
+      setCurrentUser(null);
   }
   return(
     <Fragment>
