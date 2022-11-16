@@ -4,7 +4,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
-    
+    .welcome-msg{
+      position:relative;
+      left:17%;
+    }
     .logo-container {
       height: 100%;
       width: 70px;

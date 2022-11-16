@@ -1,7 +1,6 @@
-import React,{useEffect, useContext,useState} from 'react'
-import { getRedirectResult } from 'firebase/auth'
-import {
-  auth, 
+import React,{useContext,useState} from 'react'
+// import { getRedirectResult } from 'firebase/auth'
+import { 
   signInWithGooglePopup,
   // createUserDocumentFromAuth,
   signInUserWithEmailAndPassword } from '../../../utils/firebase.utils'
@@ -10,34 +9,33 @@ import './sign-in.scss'
 import InputForm from '../../signupForm/InputForm';
 import Button from '../../Button/Button';
 import { UserContext } from '../../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const {setCurrentUser}=useContext(UserContext);
+  const navigate=useNavigate();
  const [signInFields,setSignInFields]=useState({
   email:'',
   password:''
  }) 
  const {email,password}=signInFields
-  useEffect(()=>{
-    (async()=>{
-      // const response=
-      await getRedirectResult(auth);
-      // console.log(response.user);
-      // if(response){
-      //   const userDocRef=await createUserDocumentFromAuth(response.user);
-      // }
-    })();
-  },[])
+  // useEffect(()=>{
+  //   (async()=>{
+  //     await getRedirectResult(auth);
+  //   })();
+  // },[])
   const handleChange=(event)=>{
     const {name,value}=event.target;
     setSignInFields({...signInFields,[name]:value})
   }
 const logGoogleUser=async()=>{
     const {user}= 
-    await signInWithGooglePopup();
-    // console.log(user.uid); 
+    await signInWithGooglePopup(); 
     
     setCurrentUser(user);
+    if(user){
+      navigate('/');
+    }
  }
 const Signin=async()=>{
   
@@ -46,6 +44,8 @@ const Signin=async()=>{
     setCurrentUser(response.user);
     if(response){
       alert('signed in')
+      navigate('/');
+
     }
   }catch(error){
     console.log(error.message);

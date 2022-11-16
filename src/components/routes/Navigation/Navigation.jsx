@@ -22,11 +22,18 @@ const Navigation=()=>{
        <Link className='logo-container' to="/">
            <img src={Crown} alt='logo'/>
        </Link>
+       {
+        currentUser ? <h2 className='welcome-msg'>Welcome {currentUser.displayName}!!!</h2>:<></>
+       }
          <div className='nav-links-container'>
            <Link className='nav-link' to="/products">Products</Link>
             {
               currentUser?
-              <Link className='nav-link' to="/" onClick={signOutHandler}>Sign-out</Link>:
+              <>
+              <Link className='nav-link' to="/" onClick={signOutHandler}>Sign-out</Link>
+              
+              </>
+              :
               <Link className='nav-link' to="/sign-in">Sign-up</Link>
             }
             <div>
