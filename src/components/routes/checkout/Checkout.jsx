@@ -3,8 +3,8 @@ import './checkout.scss';
 import { CartItemContext } from '../../../context/CartItemContext';
 import CheckoutItem from './CheckoutItem';
 const Checkout = () => {
-    const {cartItems}=useContext(CartItemContext);
-    const cartTotal=cartItems.reduce((accumulator,item)=>accumulator+(item.price*item.qty),0);
+    const {cartItems,cartItemTotal}=useContext(CartItemContext);
+    // const cartTotal=cartItems.reduce((accumulator,item)=>accumulator+(item.price*item.qty),0);
   return (
     <div className='checkout-container'>
       <div className='checkout-header'>
@@ -31,7 +31,7 @@ const Checkout = () => {
                     )
             }
         </div>
-        <span className='total'>Total:${cartTotal}</span>
+        <span className='total'>Total:${cartItemTotal}</span>
         </div>
   )
 }

@@ -26,7 +26,6 @@ getDocs} from 'firebase/firestore'
       };
   
   // Initialize Firebase
-  const firebaseApp =
    initializeApp(firebaseConfig);
   const provider=new GoogleAuthProvider();
   provider.setCustomParameters({
@@ -34,7 +33,8 @@ getDocs} from 'firebase/firestore'
 
   })
 
-  export const auth=getAuth();
+  const auth=getAuth();
+
   export const signInWithGooglePopup=()=> signInWithPopup(auth,provider);
   export const signInWithGoogleRedirect=()=>signInWithRedirect(auth,provider)
   export const db=getFirestore();
@@ -71,7 +71,7 @@ getDocs} from 'firebase/firestore'
 
 
     const userSnapshot=await getDoc(userDocRef);
-    // console.log(userSnapshot.exists());
+  
 
     if(!userSnapshot.exists()){
       const {displayName,email}=userAuth;

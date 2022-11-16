@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { createUserDocWithEmailAndPassword,createUserDocumentFromAuth } from '../../utils/firebase.utils';
 import InputForm from './InputForm';
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { UserContext } from '../../context/UserContext';
 
 const SignupForm = () => {
@@ -15,7 +15,7 @@ const SignupForm = () => {
   })
  
   const {displayName,email,password,confirmPassword}=formFields;
-
+  const navigate=useNavigate();
 
   const handleChange=(event)=>{
     const {name,value}=event.target;
@@ -32,6 +32,9 @@ const SignupForm = () => {
     try{
       const {user}=await createUserDocWithEmailAndPassword(email,password);
       await createUserDocumentFromAuth(user,{displayName});
+      if(user){
+        navigate('/');
+      }
       // setCurrentUser(user);
     }catch(error){
       if(error.message==='auth/email-already-in-use'){
