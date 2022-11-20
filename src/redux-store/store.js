@@ -5,7 +5,9 @@ import { rootReducer } from './root-reducer';
 
 //root reducer
 
-const middleWare=[logger];
-const composedEnhancers=compose(applyMiddleware(middleWare));
+const middleWare = [process.env.NODE_ENV === 'development' && logger].filter(
+    Boolean
+  );
+const composedEnhancers=compose(applyMiddleware(...middleWare));
 
-export const store=createStore(rootReducer,undefined,middleWare);
+export const store=createStore(rootReducer,undefined,composedEnhancers);

@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {UserProvider} from './context/UserContext';
+// import {UserProvider} from './context/UserContext';
 import { CategoriesProvider } from './context/CategoriesContext';
 import { CartProvider } from './context/CartItemContext';
 import { Provider } from 'react-redux';
@@ -14,22 +14,13 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
     <BrowserRouter>
-<<<<<<< Updated upstream
-    <UserProvider>
-=======
     {/* <UserProvider> */}
->>>>>>> Stashed changes
       <CategoriesProvider>
       <CartProvider>
         <App />
         </CartProvider>
-<<<<<<< Updated upstream
-      </CategoriesProvider>   
-    </UserProvider>
-=======
       </CategoriesProvider> 
     {/* </UserProvider> */}
->>>>>>> Stashed changes
     </BrowserRouter>
     </Provider>
     

@@ -7,8 +7,11 @@ import SignIn from './components/routes/sign-in/sign-in';
 
 import {useEffect} from 'react'
 import { authChangeListener,createUserDocumentFromAuth } from './utils/firebase.utils';
+import {setCurrentUser} from './redux-store/user/user-action';
+import {useDispatch} from 'react-redux';
 
 function App() {
+  const dispatch=useDispatch();
   useEffect(()=>{
     // const signChange=
     authChangeListener((user)=>{
@@ -16,9 +19,9 @@ function App() {
         if(user){
              createUserDocumentFromAuth(user);
         }
-        setCurrentUser(user);
+        dispatch(setCurrentUser(user));
     })
-},[])
+},[dispatch])
  
   return (
    <div>
