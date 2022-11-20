@@ -7,18 +7,32 @@ import reportWebVitals from './reportWebVitals';
 import {UserProvider} from './context/UserContext';
 import { CategoriesProvider } from './context/CategoriesContext';
 import { CartProvider } from './context/CartItemContext';
+import { Provider } from 'react-redux';
+import { store } from './redux-store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
+<<<<<<< Updated upstream
     <UserProvider>
+=======
+    {/* <UserProvider> */}
+>>>>>>> Stashed changes
       <CategoriesProvider>
       <CartProvider>
         <App />
         </CartProvider>
+<<<<<<< Updated upstream
       </CategoriesProvider>   
     </UserProvider>
+=======
+      </CategoriesProvider> 
+    {/* </UserProvider> */}
+>>>>>>> Stashed changes
     </BrowserRouter>
+    </Provider>
+    
   </React.StrictMode>
 );
 
